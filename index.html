@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="location"></div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
+    <script type="text/javascript">
+      var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQiBarx6fJqr8a7JWSooPgg67gg4C1xcQDVv-cn2ZNG-V_h8tSD0b_fpVzmGPURBX22A2gxAgipGw8k/pub?output=csv';
+      function init() {
+        Papa.parse(public_spreadsheet_url, {
+          download: true,
+          complete: showInfo
+        })
+      }
+      window.addEventListener('DOMContentLoaded', init)
+      function showInfo(results) {
+        var data = results.data;
+        document.getElementById("location").innerHTML = "" + data.join("");
+        console.log(data);
+}
+    </script>
+  </body>
+</html>
