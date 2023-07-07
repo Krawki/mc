@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="location"></div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
+    <script type="text/javascript">
+
+      var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTx_qeFD1ZQWSWa0B5KdO0P2QabpZxI3W6tgJqjhxJ-6_ASTd45k8vhS6J3L_ajopI1awDygVjtweVo/pub?gid=1486172257&single=true&output=csv';
+
+      function init() {
+        Papa.parse(public_spreadsheet_url, {
+          download: true,
+          complete: showInfo
+        })
+      }
+      window.addEventListener('DOMContentLoaded', init)
+      function showInfo(results) {
+        var data = results.data;
+        document.getElementById("location").innerHTML = "" + data.join("");
+        console.log(data);
+}
+    </script>
+  </body>
+</html>
+
+<!--
+      Add coords here :
+      https://docs.google.com/spreadsheets/d/1Ze6jEaQte0F9Te-FeqZ2HLaKBaEXRttHvsD_3GQgCjA/edit#gid=0
+
+      HTMLpipes to :
+      https://docs.google.com/spreadsheets/d/1ogfCNGyEAIr2rbdu2XH9nJiqFx_hRyQHjeIfM9umvUE/edit#gid=1486172257
+ -->
